@@ -17,6 +17,6 @@ app.use(cors({origin:"*"}))
 
 app.post('/login', controllers.login)
 app.post('/register',controllers.reqister)
-app.get('/myprofile', controllers.protecterRouter, controllers.profile)
+app.get('/profile', controllers.protecterRouter, controllers.profile)
 
-app.listen(3000, ()=>console.log('Server is running...'))
+app.listen(5000, ()=>console.log('Server is running...'))

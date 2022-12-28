@@ -56,11 +56,14 @@ const login=async (req,res)=>{
 
 const protecterRouter=async (req,res, next)=>{
     try{
+        //check the x token, if not there return false
         let token=req.header('x-token')
         if(!token){
             return res.status(400).send("token not found")
         }
+        //verfy token/string from header with same key while in sign
         let decodeToken=jwt.verify(token, "PAVAN_JWT_KEY")
+        //get id of the token, which we passed as payload in sign
         req.user=decodeToken.user
         next()
     }catch(err){
