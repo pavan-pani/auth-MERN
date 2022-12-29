@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, {useContext, useState, useEffect} from 'react'
-import { Link } from 'react-router-dom'
+import { Link , Navigate} from 'react-router-dom'
 import { store } from '../App'
 
 const Profile = () => {
@@ -13,10 +13,10 @@ const Profile = () => {
       }
     }).then(res=>setdata(res.data))
       .catch((err)=>console.log(err.res.data.err))
-  },[])
+  },[token])
 
   if(!token){
-    return <Link to={'/login'}/>
+    return <Navigate to="/login" replace={true} />
   }
   return (
     <div>

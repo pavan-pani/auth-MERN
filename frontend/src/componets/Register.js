@@ -6,7 +6,7 @@ const Register = () => {
     // name:"",
     email:"",
     password:"",
-    ConfirmPassword:""
+    confirmPassword:""
 
   })
 
@@ -15,10 +15,14 @@ const Register = () => {
   }
   const submithandler=(e)=>{
     e.preventDefault()
-    axios.post('http://localhost:5000/register', data).then(
+    console.log(data);
+    if(data.password===data.confirmPassword){
+       axios.post('http://localhost:5000/register', data).then(
       res=>alert(res.data)
-    ).catch((err)=>console.log(err.res.data.err))
-    //console.log(data);
+      ).catch((err)=>console.log(err))
+      //console.log(data);
+    }
+   
   }
   return (
     <center>
@@ -30,7 +34,7 @@ const Register = () => {
             <label>Password</label><br/>
             <input type="password" name="password" onChange={changehandler}></input><br/>
             <label>Confirm Password</label><br/>
-            <input type="password" name="ConfirmPassword" onChange={changehandler}></input><br/><br/>
+            <input type="password" name="confirmPassword" onChange={changehandler}></input><br/><br/>
             <button type='submit'>Sign Up</button>
         </form>
     </center>

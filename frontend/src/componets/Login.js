@@ -25,7 +25,7 @@ const Login = () => {
   }
 
   if(token){
-    <Navigate to="/profile" replace={true} />
+    // <Navigate to="/profile" replace={true} />
     // <Link to={'/profile'} />
     // return console.log(token);
   }
@@ -33,7 +33,7 @@ const Login = () => {
   return (
     <div>
     {
-      token ? <Profile/> :
+      token ? <Navigate to="/profile" replace={true} /> :
 
     
     <center>
